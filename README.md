@@ -4,26 +4,27 @@ Contains the implementation of experiments for a video concept and event detecti
 
 # Description
 
+In this code, a dataset that contains 106 videos from news reports is utilized. Videos are categories into nine concepts/events. Note that one video may be relevant to zero or more of these concepts/events. The dataset is available at: http://mklab-services.iti.gr/multisensor/data/Event_Detection_Dataset_MS.rar . Key frames are already extracted from the dataset video shots because training is made on images. Total number of key frames on this dataset is 2826. DCNN features are extracted from the key frames based on the Caffe models trained in the work of (Markatopoulou et al.).  Using a random balanced split on the dataset for each concept/event, where the videos are divided into three chunks, a three-fold CV is performed using two chunks for training purposes and the remaining chunk for testing. The classification algorithm used in this code is Support Vector Machines (SVMs), where it’s “c” parameter is tuned using grid search. Output of this module is the evaluation per concept/event on videos in terms of accuracy and F-score.
 
 # Input arguments
 
 This code is used for the aforementioned dataset but it can be used for other datasets provided that all image (key frames) names are number identifiers starting from 1 and ending to the total number of key frames.  The paths for the following files must be provided as arguments:
 
  - Feature vector file. File must contain one vector per line with a space separating each value of the vector. Order must be ascending in terms of the image file name.
- - Key frame annotation file. This file contains the annotation per concept/event of all key frames. Concepts/events are identified in terms of these IDs: [001, 002, 003, 004, 005, 006, 007, 008, 009]. Each line of the file has the following format (order of image names does not matter here):
-<concept_id> 1 <image_name_without_file_extension> <annotation_value (-1 or 1)> 1 
-Example lines: 
-001 1 101 1 1
-001 1 102 -1 1
-002 1 101 -1 1
+ - Key frame annotation file. This file contains the annotation per concept/event of all key frames. Concepts/events are identified in terms of these IDs: [001, 002, 003, 004, 005, 006, 007, 008, 009]. Each line of the file has the following format (order of image names does not matter here): <br />
+<concept_id> 1 <image_name_without_file_extension> <annotation_value (-1 or 1)> 1 <br />
+Example lines: <br />
+001 1 101 1 1 <br />
+001 1 102 -1 1 <br />
+002 1 101 -1 1 <br />
 002 1 102 -1 1
- - Video annotation file. This file contains the annotation per concept of all videos. Concepts/events are identified in terms of the same ids as in the key frame annotation file. Each line of the file has the following format:
+ - Video annotation file. This file contains the annotation per concept of all videos. Concepts/events are identified in terms of the same ids as in the key frame annotation file. Each line of the file has the following format: <br />
 <concept_id> 1 <video_name_without_file_extension> <annotation_value (-1 or 1)> 1 
- - Video-to-image mapping. This file shows which images correspond to which video. It is considered that a video key frames consist of range image IDs (e.g. 11-17) Each line of the file has the following format: 
-<video_name_without_file_extension> <first_frame_image_id>-<last_frame_image_id>
-Example:
-video name: dg20130420_cottbus_sd_avc.mp4
-key frames extracted from the video: 10.jpg, 11.jpg, 12.jpg, 13.jpg, 14.jpg
+ - Video-to-image mapping. This file shows which images correspond to which video. It is considered that a video key frames consist of range image IDs (e.g. 11-17) Each line of the file has the following format: <br />
+<video_name_without_file_extension> <first_frame_image_id>-<last_frame_image_id> <br />
+Example: <br />
+video name: dg20130420_cottbus_sd_avc.mp4 <br />
+key frames extracted from the video: 10.jpg, 11.jpg, 12.jpg, 13.jpg, 14.jpg <br />
 line in the mapping file: dg20130420_cottbus_sd_avc 10-14
 
 
