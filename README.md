@@ -12,16 +12,16 @@ This code is used for the aforementioned dataset but it can be used for other da
 
  - Feature vector file. File must contain one vector per line with a space separating each value of the vector. Order must be ascending in terms of the image file name.
  - Key frame annotation file. This file contains the annotation per concept/event of all key frames. Concepts/events are identified in terms of these IDs: [001, 002, 003, 004, 005, 006, 007, 008, 009]. Each line of the file has the following format (order of image names does not matter here): <br />
-<concept_id> 1 <image_name_without_file_extension> <annotation_value (-1 or 1)> 1 <br />
+[concept_id] 1 [image_name_without_file_extension] [annotation_value (-1 or 1)] 1 <br />
 Example lines: <br />
 001 1 101 1 1 <br />
 001 1 102 -1 1 <br />
 002 1 101 -1 1 <br />
 002 1 102 -1 1
  - Video annotation file. This file contains the annotation per concept of all videos. Concepts/events are identified in terms of the same ids as in the key frame annotation file. Each line of the file has the following format: <br />
-<concept_id> 1 <video_name_without_file_extension> <annotation_value (-1 or 1)> 1 
+[concept_id] 1 [video_name_without_file_extension] [annotation_value (-1 or 1)] 1 
  - Video-to-image mapping. This file shows which images correspond to which video. It is considered that a video key frames consist of range image IDs (e.g. 11-17) Each line of the file has the following format: <br />
-<video_name_without_file_extension> <first_frame_image_id>-<last_frame_image_id> <br />
+[video_name_without_file_extension] [first_frame_image_id]-[last_frame_image_id] <br />
 Example: <br />
 video name: dg20130420_cottbus_sd_avc.mp4 <br />
 key frames extracted from the video: 10.jpg, 11.jpg, 12.jpg, 13.jpg, 14.jpg <br />
